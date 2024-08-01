@@ -39,7 +39,9 @@ class GameOver extends StatelessWidget {
             ),
             SizedBox(
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/home-page');
+                },
                 style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all(Colors.deepPurple),

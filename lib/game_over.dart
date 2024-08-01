@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class GameOverScreen extends StatelessWidget {
-  const GameOverScreen({super.key});
+class GameOver extends StatelessWidget {
+  static const routeName = '/game-over';
+  const GameOver({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,16 +52,14 @@ class GameOverScreen extends StatelessWidget {
 
                       return null;
                     })),
-                child:  const Text('Play again',
-                      style: TextStyle(
-                        fontSize: 50,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      )),
-                ),
+                child: const Text('Play again',
+                    style: TextStyle(
+                      fontSize: 50,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                    )),
+              ),
             ),
-
-            
           ]),
         ),
       ),

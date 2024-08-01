@@ -32,31 +32,30 @@ class HomePage extends StatelessWidget {
                     child: Image.asset('assets/images/logo.jpg'),
                   ),
                 ),
+
                 ElevatedButton(
                   onPressed: () {
-                    print('click');
+                    Navigator.pushNamed(context, '/quiz');
                   },
                   style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.resolveWith((states) {
-                        if (states.contains(MaterialState.hovered)) {
-                          return Colors.deepPurple.shade200;
-                        }
-                        return Colors.deepPurple[400];
-                      }),
-
-                      padding: MaterialStateProperty.all(
-                          const EdgeInsets.fromLTRB(100, 20, 100, 20)),
-                      mouseCursor:
-                          MaterialStateProperty.all(SystemMouseCursors.click),
-                      
-                      elevation: MaterialStateProperty.resolveWith((states) {
-                        if (states.contains(MaterialState.hovered)) {
-                        return 10; 
+                    backgroundColor:
+                        MaterialStateProperty.resolveWith((states) {
+                      if (states.contains(MaterialState.hovered)) {
+                        return Colors.deepPurple.shade200;
                       }
-                      return 2; 
-                      }),
-                      
-                      ),
+                      return Colors.deepPurple[400];
+                    }),
+                    padding: MaterialStateProperty.all(
+                        const EdgeInsets.fromLTRB(100, 20, 100, 20)),
+                    mouseCursor:
+                        MaterialStateProperty.all(SystemMouseCursors.click),
+                    elevation: MaterialStateProperty.resolveWith((states) {
+                      if (states.contains(MaterialState.hovered)) {
+                        return 10;
+                      }
+                      return 2;
+                    }),
+                  ),
                   child: const Text(
                     'Play',
                     style: TextStyle(

@@ -24,7 +24,7 @@ class GameOver extends StatelessWidget {
                       fontWeight: FontWeight.bold)),
             ),
             const SizedBox(
-              height: 50,
+              height: 80,
             ),
             SizedBox(
               width: 300,
@@ -35,7 +35,7 @@ class GameOver extends StatelessWidget {
                       fontWeight: FontWeight.bold)),
             ),
             const SizedBox(
-              height: 190,
+              height: 150,
             ),
             SizedBox(
               child: ElevatedButton(

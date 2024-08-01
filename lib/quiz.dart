@@ -9,16 +9,38 @@ class Quiz extends StatefulWidget {
   State<Quiz> createState() => _QuizState();
 }
 
+class QuizArguments {
+  final int hits;
+
+  const QuizArguments(this.hits);
+}
+
 class _QuizState extends State<Quiz> {
+  int quiz_index = 0;
+  int hits = 0;
+
   @override
   Widget build(BuildContext context) {
     List quiz = [];
-    
+
     for (int i = 0; i < 10; i++) {
       quiz.add(allQuestions[i]);
     }
 
-    int quiz_index = 0;
+    void nextQuestion(int alternative) {
+      if (quiz_index == 9) {
+        Navigator.pushNamed(context, '/game-over', arguments: QuizArguments(hits));
+      } else {
+        int currect_alternative = quiz[quiz_index]['alternativa_correcta'];
+
+        if (alternative == currect_alternative) {
+          hits++;
+        }
+        setState(() {
+          quiz_index++;
+        });
+      }
+    }
 
     return MaterialApp(
       home: Scaffold(
@@ -29,10 +51,10 @@ class _QuizState extends State<Quiz> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Align(
+                  Align(
                     alignment: Alignment.topRight,
-                    child: Text('Pergunta 1 de 10',
-                        style: TextStyle(
+                    child: Text('Pergunta ${quiz_index+1} de 10',
+                        style: const TextStyle(
                           fontSize: 20,
                         )),
                   ),
@@ -47,7 +69,9 @@ class _QuizState extends State<Quiz> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          nextQuestion(1);
+                        },
                         style: ButtonStyle(
                           minimumSize:
                               MaterialStateProperty.all(const Size(300, 100)),
@@ -59,7 +83,7 @@ class _QuizState extends State<Quiz> {
                           overlayColor:
                               MaterialStateProperty.all(Colors.deepPurple[300]),
                         ),
-                        child:  Text(
+                        child: Text(
                           "${quiz[quiz_index]['alternativas'][0]}",
                           style: const TextStyle(
                             fontSize: 20,
@@ -70,7 +94,9 @@ class _QuizState extends State<Quiz> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        nextQuestion(2);
+                      },
                       style: ButtonStyle(
                         minimumSize:
                             MaterialStateProperty.all(const Size(300, 100)),
@@ -91,7 +117,9 @@ class _QuizState extends State<Quiz> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        nextQuestion(3);
+                      },
                       style: ButtonStyle(
                         minimumSize:
                             MaterialStateProperty.all(const Size(300, 100)),

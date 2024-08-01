@@ -14,7 +14,7 @@ class QuizArguments {
 
   const QuizArguments(this.hits);
 }
-
+// tem um bag na contagem de acertos 
 class _QuizState extends State<Quiz> {
   int quiz_index = 0;
   int hits = 0;

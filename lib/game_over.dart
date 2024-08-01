@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'quiz.dart';
 
 class GameOver extends StatelessWidget {
   static const routeName = '/game-over';
@@ -6,6 +7,9 @@ class GameOver extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final arguments =
+        ModalRoute.of(context)?.settings.arguments as QuizArguments;
+
     return MaterialApp(
         home: Scaffold(
       backgroundColor: Colors.deepPurple[100],
@@ -28,7 +32,7 @@ class GameOver extends StatelessWidget {
             ),
             SizedBox(
               width: 300,
-              child: Text('Você acertou 8 de 10 perguntas',
+              child: Text('Você acertou ${arguments.hits} de 10 perguntas',
                   style: TextStyle(
                       fontSize: 30,
                       color: Colors.deepPurple[300],

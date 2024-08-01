@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Quiz extends StatefulWidget {
+  static const routeName = '/quiz';
   const Quiz({super.key});
 
   @override

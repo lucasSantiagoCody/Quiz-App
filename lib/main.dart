@@ -12,6 +12,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp( );
+    return MaterialApp(
+        initialRoute: '/home-page',
+      routes: {
+      HomePage.routeName: (context) => const HomePage(),
+      Quiz.routeName: (context) => const Quiz(),
+      GameOver.routeName: (context) => const GameOver(),
+      },
+    );
+       
   }
 }

@@ -32,9 +32,9 @@ class _QuizState extends State<Quiz> {
         Navigator.pushNamed(context, '/game-over',
             arguments: QuizArguments(hits));
       } else {
-        int currect_alternative = quiz[quizIndex]['alternativa_correcta'];
+        int currectElternative = quiz[quizIndex]['alternativa_correcta'];
 
-        if (alternative == currect_alternative) {
+        if (alternative == currectElternative) {
           hits++;
         }
         setState(() {

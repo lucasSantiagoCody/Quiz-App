@@ -28,15 +28,15 @@ class _QuizState extends State<Quiz> {
       quiz.add(allQuestions[i]);
     }
     void nextQuestion(int alternative) {
+      int currectElternative = quiz[quizIndex]['alternativa_correcta'];
+
+      if (alternative == currectElternative) {
+        hits++;
+      }
       if (quizIndex == 9) {
         Navigator.pushNamed(context, '/game-over',
             arguments: QuizArguments(hits));
       } else {
-        int currectElternative = quiz[quizIndex]['alternativa_correcta'];
-
-        if (alternative == currectElternative) {
-          hits++;
-        }
         setState(() {
           quizIndex++;
         });

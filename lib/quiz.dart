@@ -14,9 +14,10 @@ class QuizArguments {
 
   const QuizArguments(this.hits);
 }
-// tem um bag na contagem de acertos 
+
+// tem um bag na contagem de acertos
 class _QuizState extends State<Quiz> {
-  int quiz_index = 0;
+  int quizIndex = 0;
   int hits = 0;
 
   @override
@@ -26,18 +27,18 @@ class _QuizState extends State<Quiz> {
     for (int i = 0; i < 10; i++) {
       quiz.add(allQuestions[i]);
     }
-
     void nextQuestion(int alternative) {
-      if (quiz_index == 9) {
-        Navigator.pushNamed(context, '/game-over', arguments: QuizArguments(hits));
+      if (quizIndex == 9) {
+        Navigator.pushNamed(context, '/game-over',
+            arguments: QuizArguments(hits));
       } else {
-        int currect_alternative = quiz[quiz_index]['alternativa_correcta'];
+        int currect_alternative = quiz[quizIndex]['alternativa_correcta'];
 
         if (alternative == currect_alternative) {
           hits++;
         }
         setState(() {
-          quiz_index++;
+          quizIndex++;
         });
       }
     }
@@ -53,7 +54,7 @@ class _QuizState extends State<Quiz> {
                 children: [
                   Align(
                     alignment: Alignment.topRight,
-                    child: Text('Pergunta ${quiz_index+1} de 10',
+                    child: Text('Pergunta ${quizIndex + 1} de 10',
                         style: const TextStyle(
                           fontSize: 20,
                         )),
@@ -61,7 +62,7 @@ class _QuizState extends State<Quiz> {
                   SizedBox(
                       width: double.infinity,
                       child: Center(
-                        child: Text("${quiz[quiz_index]['pergunta']}",
+                        child: Text("${quiz[quizIndex]['pergunta']}",
                             style: const TextStyle(
                               fontSize: 30,
                             )),
@@ -84,7 +85,7 @@ class _QuizState extends State<Quiz> {
                               MaterialStateProperty.all(Colors.deepPurple[300]),
                         ),
                         child: Text(
-                          "${quiz[quiz_index]['alternativas'][0]}",
+                          "${quiz[quizIndex]['alternativas'][0]}",
                           style: const TextStyle(
                             fontSize: 20,
                             color: Colors.white,
@@ -107,7 +108,7 @@ class _QuizState extends State<Quiz> {
                         overlayColor:
                             MaterialStateProperty.all(Colors.deepPurple[300]),
                       ),
-                      child: Text("${quiz[quiz_index]['alternativas'][1]}",
+                      child: Text("${quiz[quizIndex]['alternativas'][1]}",
                           style: const TextStyle(
                             fontSize: 20,
                             color: Colors.white,
@@ -130,7 +131,7 @@ class _QuizState extends State<Quiz> {
                         overlayColor:
                             MaterialStateProperty.all(Colors.deepPurple[300]),
                       ),
-                      child: Text("${quiz[quiz_index]['alternativas'][2]}",
+                      child: Text("${quiz[quizIndex]['alternativas'][2]}",
                           style: const TextStyle(
                             fontSize: 20,
                             color: Colors.white,
